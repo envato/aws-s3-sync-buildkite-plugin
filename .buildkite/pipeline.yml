@@ -1,0 +1,22 @@
+---
+
+steps:
+
+  - label: ":hammer: Test"
+    agents: queue=${AGENT_QUEUE}
+    plugins:
+      - docker-compose#v3.1.0:
+          run: tests
+
+  - label: ":sparkles: Lint"
+    agents: queue=${AGENT_QUEUE}
+    plugins:
+      - plugin-linter#v2.0.0:
+          id: envato/aws-s3-sync
+
+  - label: ":shell: Shellcheck"
+    agents: queue=${AGENT_QUEUE}
+    plugins:
+      - shellcheck#v1.1.2:
+          files:
+            - hooks/**

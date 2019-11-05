@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ ${BUILDKITE_COMMAND_EXIT_STATUS:-0} != '0' ]]; then
+  echo '~~~ Skipping S3 sync because the command failed'
+  exit 0
+fi
+
+echo "~~~ :s3: Syncing $BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE to $BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"
+aws s3 sync "$BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE" "$BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"
