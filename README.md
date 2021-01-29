@@ -1,6 +1,6 @@
 # AWS S3 Sync Buildkite Plugin
 
-![Build status](https://badge.buildkite.com/39a2058c81ac115411ffaa5f902b15c5c6afd425ce2194c371.svg?branch=master)
+![Build status](https://badge.buildkite.com/39a2058c81ac115411ffaa5f902b15c5c6afd425ce2194c371.svg?branch=main)
 [![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
 A [Buildkite plugin] that syncs files to the AWS Simple Storage Service (S3).
