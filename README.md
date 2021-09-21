@@ -27,6 +27,12 @@ The source directory containing the files to sync to S3.
 
 The S3 URI describing where to sync the files to.
 
+### `delete`
+
+Defaults to `false`
+
+Files that exist in the destination but not in the source are deleted during sync.
+
 ## Development
 
 To run the tests:

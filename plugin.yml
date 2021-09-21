@@ -9,6 +9,8 @@ configuration:
       type: string
     destination:
       type: string
+    delete:
+      type: boolean
   required:
     - source
     - destination
