@@ -33,6 +33,12 @@ Defaults to `false`
 
 Files that exist in the destination but not in the source are deleted during sync.
 
+### `follow-symlinks`
+
+Defaults to `true`
+
+Symbolic links are followed only when uploading to S3 from the local filesystem.
+
 ## Development
 
 To run the tests:

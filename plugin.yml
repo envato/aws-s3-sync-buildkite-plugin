@@ -11,6 +11,8 @@ configuration:
       type: string
     delete:
       type: boolean
+    follow-symlinks:
+      type: boolean
   required:
     - source
     - destination
