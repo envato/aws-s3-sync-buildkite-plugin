@@ -19,6 +19,36 @@ load '/usr/local/lib/bats/load.bash'
   unstub aws
 }
 
+@test "Syncs and deletes files" {
+  export BUILDKITE_COMMAND_EXIT_STATUS=0
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=source/
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=s3://destination
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_DELETE=true
+
+  stub aws "s3 sync --delete source/ s3://destination : echo s3 sync --delete"
+
+  run $PWD/hooks/post-command
+
+  assert_success
+  assert_output --partial "s3 sync --delete"
+  unstub aws
+}
+
+@test "Doesn't follow symlinks" {
+  export BUILDKITE_COMMAND_EXIT_STATUS=0
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=source/
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=s3://destination
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_FOLLOW_SYMLINKS=false
+
+  stub aws "s3 sync --no-follow-symlinks source/ s3://destination : echo s3 sync --no-follow-symlinks"
+
+  run $PWD/hooks/post-command
+
+  assert_success
+  assert_output --partial "s3 sync --no-follow-symlinks"
+  unstub aws
+}
+
 @test "Doesn't attempt to sync files if the step command fails" {
   export BUILDKITE_COMMAND_EXIT_STATUS=1
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=source/

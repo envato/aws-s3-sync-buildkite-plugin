@@ -6,5 +6,15 @@ if [[ ${BUILDKITE_COMMAND_EXIT_STATUS:-0} != '0' ]]; then
   exit 0
 fi
 
+params=()
+
+if [[ "${BUILDKITE_PLUGIN_AWS_S3_SYNC_DELETE:-false}" == "true" ]]; then
+  params+=(--delete)
+fi
+
+if [[ "${BUILDKITE_PLUGIN_AWS_S3_SYNC_FOLLOW_SYMLINKS:-true}" == "false" ]]; then
+  params+=(--no-follow-symlinks)
+fi
+
 echo "~~~ :s3: Syncing $BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE to $BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"
-aws s3 sync "$BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE" "$BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"
+aws s3 sync "${params[@]}" "$BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE" "$BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"

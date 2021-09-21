@@ -12,7 +12,7 @@ steps:
   - label: "Generate files and push to S3"
     command: bin/command-that-generates-files
     plugins:
-      - envato/aws-s3-sync#v0.1.0:
+      - envato/aws-s3-sync#v0.2.0:
           source: local-directory/
           destination: s3://example-bucket/directory/
 ```
@@ -26,6 +26,18 @@ The source directory containing the files to sync to S3.
 ### `destination`
 
 The S3 URI describing where to sync the files to.
+
+### `delete`
+
+Defaults to `false`
+
+Files that exist in the destination but not in the source are deleted during sync.
+
+### `follow-symlinks`
+
+Defaults to `true`
+
+Symbolic links are followed only when uploading to S3 from the local filesystem.
 
 ## Development
 
