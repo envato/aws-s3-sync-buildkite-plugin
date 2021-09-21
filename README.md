@@ -12,7 +12,7 @@ steps:
   - label: "Generate files and push to S3"
     command: bin/command-that-generates-files
     plugins:
-      - envato/aws-s3-sync#v0.1.0:
+      - envato/aws-s3-sync#v0.2.0:
           source: local-directory/
           destination: s3://example-bucket/directory/
 ```
