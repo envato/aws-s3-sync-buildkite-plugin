@@ -14,6 +14,9 @@ function aws_s3_sync() {
     params+=(--no-follow-symlinks)
   fi
 
+  params+=("$source")
+  params+=("$destination")
+
   echo "~~~ :s3: Syncing $source to $destination"
-  aws s3 sync "${params[@]}" "$source" "$destination" 
+  aws s3 sync "${params[@]}"
 }
