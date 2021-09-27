@@ -6,7 +6,7 @@ DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 # shellcheck source=lib/shared.bash
 source "$DIR/../lib/shared.bash"
 
-if [[ $BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE == s3://* ]] ;then
+if [[ $BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE == s3://* ]] && [[ $BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION != s3://* ]] ;then
   aws_s3_sync "$BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE" "$BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"
 else
   echo '~~~ Skipping S3 sync during pre-command because source is a local directory'
