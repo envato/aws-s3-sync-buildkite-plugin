@@ -7,7 +7,7 @@ A [Buildkite plugin] that syncs files to the AWS Simple Storage Service (S3).
 
 ## Example
 
-Sync files after the command with s3 (`post-command` hook)
+Sync files with s3 after the command (`post-command` hook)
 
 ```yml
 steps:
