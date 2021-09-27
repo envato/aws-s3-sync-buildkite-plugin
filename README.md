@@ -3,11 +3,11 @@
 ![Build status](https://badge.buildkite.com/39a2058c81ac115411ffaa5f902b15c5c6afd425ce2194c371.svg?branch=main)
 [![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
-A [Buildkite plugin] that syncs files to the AWS Simple Storage Service (S3).
+A [Buildkite plugin] that syncs files to the AWS Simple Storage Service (S3). It automatically detects when the local path is the source or destination, then syncs after or before the step `command` respectively.
 
 ## Example
 
-Sync files with s3 after the command (`post-command` hook)
+Sync local files source with s3 destination, after the `command`.
 
 ```yml
 steps:
@@ -19,7 +19,7 @@ steps:
           destination: s3://example-bucket/directory/
 ```
 
-When the source is s3, it will sync files before the command (`pre-command` hook)
+Sync s3 files source with a local path destination, before the `command`.
 
 ```yml
 steps:
@@ -35,11 +35,11 @@ steps:
 
 ### `source`
 
-The source directory containing the files to sync to S3.
+The source location containing the local path or the s3 uri.
 
 ### `destination`
 
-The S3 URI describing where to sync the files to.
+The destination location containing the local path or the s3 uri.
 
 ### `delete`
 
