@@ -7,6 +7,8 @@ A [Buildkite plugin] that syncs files to the AWS Simple Storage Service (S3).
 
 ## Example
 
+Sync files after the command with s3 (`post-command` hook)
+
 ```yml
 steps:
   - label: "Generate files and push to S3"
@@ -15,6 +17,18 @@ steps:
       - envato/aws-s3-sync#v0.2.0:
           source: local-directory/
           destination: s3://example-bucket/directory/
+```
+
+When the source is s3, it will sync files before the command (`pre-command` hook)
+
+```yml
+steps:
+  - label: "Pull files from S3 and execute task"
+    command: bin/command-that-uses-files
+    plugins:
+      - envato/aws-s3-sync#v0.2.0:
+          source: s3://example-bucket/directory/
+          destination: local-directory/
 ```
 
 ## Configuration
