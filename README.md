@@ -31,6 +31,17 @@ steps:
           destination: local-directory/
 ```
 
+Syncing s3 files source with a s3 files destination. This is run after the main command in a [`post-command` job hook](https://buildkite.com/docs/agent/v3/hooks#job-lifecycle-hooks).
+
+````yml
+steps:
+  - label: "Copy between buckets"
+    plugins:
+      - envato/no-command#v0.1.0: ~
+      - envato/aws-s3-sync#v0.3.0:
+          source: s3://example-bucket/directory/
+          destination: s3://other-bucket/directory/
+
 ## Configuration
 
 ### `source`
