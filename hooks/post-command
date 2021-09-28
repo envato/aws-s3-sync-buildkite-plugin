@@ -13,7 +13,5 @@ fi
 
 if [[ $BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE != s3://* ]] ;then
   aws_s3_sync "$BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE" "$BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"
-else
-  echo '~~~ Skipping S3 sync during post-command because source is s3'
 fi
 

@@ -52,7 +52,6 @@ load '/usr/local/lib/bats/load.bash'
 
   run $PWD/hooks/pre-command
 
-  assert_output --partial "Skipping S3 sync during pre-command"
   assert_success
 }
 
@@ -62,6 +61,5 @@ load '/usr/local/lib/bats/load.bash'
 
   run $PWD/hooks/pre-command
 
-  assert_output --partial "Skipping S3 sync during pre-command"
   assert_success
 }

@@ -7,7 +7,7 @@ A [Buildkite plugin] that syncs files to the AWS Simple Storage Service (S3). It
 
 ## Example
 
-Sync local files source with s3 destination, after the `command`.
+Sync local files source with s3 destination. This is run after the main command in a [`post-command` job hook](https://buildkite.com/docs/agent/v3/hooks#job-lifecycle-hooks).
 
 ```yml
 steps:
@@ -19,7 +19,7 @@ steps:
           destination: s3://example-bucket/directory/
 ```
 
-Sync s3 files source with a local path destination, before the `command`.
+Sync s3 files source with a local path destination. This is run before the main command in a [`pre-command` job hook](https://buildkite.com/docs/agent/v3/hooks#job-lifecycle-hooks).
 
 ```yml
 steps:

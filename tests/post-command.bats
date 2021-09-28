@@ -67,6 +67,5 @@ load '/usr/local/lib/bats/load.bash'
 
   run $PWD/hooks/post-command
 
-  assert_output --partial "Skipping S3 sync during post-command"
   assert_success
 }
