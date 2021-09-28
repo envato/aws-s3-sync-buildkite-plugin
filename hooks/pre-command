@@ -6,12 +6,7 @@ DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 # shellcheck source=lib/shared.bash
 source "$DIR/../lib/shared.bash"
 
-if [[ ${BUILDKITE_COMMAND_EXIT_STATUS:-0} != '0' ]]; then
-  echo '~~~ Skipping S3 sync because the command failed'
-  exit 0
-fi
-
-if [[ $BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE != s3://* ]] ;then
+if [[ $BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE == s3://* ]] && [[ $BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION != s3://* ]] ;then
   aws_s3_sync "$BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE" "$BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION"
 fi
 

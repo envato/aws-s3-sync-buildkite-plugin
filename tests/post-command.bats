@@ -56,5 +56,16 @@ load '/usr/local/lib/bats/load.bash'
 
   run $PWD/hooks/post-command
 
+  assert_output --partial "Skipping S3 sync because the command failed"
+  assert_success
+}
+
+@test "Skips post command when source is s3" {
+  export BUILDKITE_COMMAND_EXIT_STATUS=0
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=s3://source
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=destination/
+
+  run $PWD/hooks/post-command
+
   assert_success
 }
