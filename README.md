@@ -1,6 +1,7 @@
 # AWS S3 Sync Buildkite Plugin
 
-![Build status](https://badge.buildkite.com/39a2058c81ac115411ffaa5f902b15c5c6afd425ce2194c371.svg?branch=main)
+[![tests](https://github.com/envato/aws-s3-sync-buildkite-plugin/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/envato/aws-s3-sync-buildkite-plugin/actions/workflows/tests.yml)
+
 [![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
 A [Buildkite plugin] that syncs files to the AWS Simple Storage Service (S3). It automatically detects when the local path is the source or destination, then syncs after or before the step `command` respectively.
