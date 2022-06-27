@@ -51,7 +51,13 @@ Files that exist in the destination but not in the source are deleted during syn
 
 Defaults to `true`
 
-Symbolic links are followed only when uploading to S3 from the local filesystem.
+Symbolic links are followed only when uploading to S3 from the local filesystem. 
+
+### `cache-control`
+
+Defaults to `null`
+
+Specify the cache control metadata value for all syncable objects 
 
 ## Development
 
