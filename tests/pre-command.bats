@@ -46,6 +46,20 @@ load '/usr/local/lib/bats/load.bash'
   unstub aws
 }
 
+@test "Ignores cache control option" {
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=s3://source
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=destination/
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_CACHE_CONTROL="public,max-age=315360000"
+
+  stub aws "s3 sync s3://source destination/ : echo s3 sync"
+
+  run $PWD/hooks/pre-command
+
+  assert_success
+  assert_output --partial "s3 sync"
+  unstub aws
+}
+
 @test "Skips pre command when source is local" {
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=source/
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=s3://destination

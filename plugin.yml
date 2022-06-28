@@ -13,6 +13,8 @@ configuration:
       type: boolean
     follow-symlinks:
       type: boolean
+    cache-control:
+      type: string
   required:
     - source
     - destination
