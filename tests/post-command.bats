@@ -39,12 +39,12 @@ load '/usr/local/lib/bats/load.bash'
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=s3://destination
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_CACHE_CONTROL="public, max-age=315360000"
 
-  stub aws "s3 sync --cache-control public, max-age=315360000 source/ s3://destination : echo s3 sync --cache-control public, max-age=315360000"
+  stub aws "s3 sync --cache-control=public,max-age=315360000 source/ s3://destination : echo s3 sync --cache-control=public,max-age=315360000"
 
   run $PWD/hooks/post-command
 
   assert_success
-  assert_output --partial "s3 sync --cache-control public, max-age=315360000"
+  assert_output --partial "s3 sync --cache-control=public,max-age=315360000"
   unstub aws
 }
 

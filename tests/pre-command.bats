@@ -49,14 +49,14 @@ load '/usr/local/lib/bats/load.bash'
 @test "Syncs with cache control metadata" {
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=s3://source
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=destination/
-  export BUILDKITE_PLUGIN_AWS_S3_SYNC_CACHE_CONTROL="public, max-age=315360000"
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_CACHE_CONTROL="public,max-age=315360000"
 
-  stub aws "s3 sync --cache-control public, max-age=315360000 s3://source destination/ : echo s3 sync --cache-control public, max-age=315360000"
+  stub aws "s3 sync --cache-control=public,max-age=315360000 s3://source destination/ : echo s3 sync --cache-control=public,max-age=315360000"
 
   run $PWD/hooks/pre-command
 
   assert_success
-  assert_output --partial "s3 sync --cache-control public, max-age=315360000"
+  assert_output --partial "s3 sync --cache-control=public,max-age=315360000"
   unstub aws
 }
 
