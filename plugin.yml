@@ -15,7 +15,7 @@ configuration:
       type: boolean
     cache-control:
       type: string
-    endpoint:
+    endpoint-url:
       type: string
   required:
     - source

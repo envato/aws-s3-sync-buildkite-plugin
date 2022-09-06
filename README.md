@@ -59,11 +59,11 @@ Defaults to `null`
 
 Specify the cache control metadata value for all syncable objects 
 
-### `endpoint`
+### `endpoint-url`
 
 Defaults to `null`
 
-Specify the s3 endpoint to use.
+Specify the s3 endpoint URL to use.
 
 ## Development
 
