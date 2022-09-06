@@ -69,7 +69,7 @@ load '/usr/local/lib/bats/load.bash'
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=s3://destination
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_ENDPOINT_URL=envato-test-bucket.s3-website-us-east-1.amazonaws.com
 
-  stub aws "s3 sync --endpoint-url=envato-test-bucket.s3-website-us-east-1.amazonaws.com s3://source destination/ : echo s3 sync --endpoint-url=envato-test-bucket.s3-website-us-east-1.amazonaws.com"
+  stub aws "s3 sync --endpoint-url=envato-test-bucket.s3-website-us-east-1.amazonaws.com source/ s3://destination : echo s3 sync --endpoint-url=envato-test-bucket.s3-website-us-east-1.amazonaws.com"
 
   run $PWD/hooks/post-command
 
