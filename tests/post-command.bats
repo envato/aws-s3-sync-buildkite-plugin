@@ -67,14 +67,14 @@ load '/usr/local/lib/bats/load.bash'
   export BUILDKITE_COMMAND_EXIT_STATUS=0
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=source/
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=s3://destination
-  export BUILDKITE_PLUGIN_AWS_S3_SYNC_ENDPOINT_URL=envato-test-bucket.s3-website-us-east-1.amazonaws.com
+  export BUILDKITE_PLUGIN_AWS_S3_SYNC_ENDPOINT_URL=https://myaccountid.r2.cloudflarestorage.com
 
-  stub aws "s3 sync --endpoint-url=envato-test-bucket.s3-website-us-east-1.amazonaws.com source/ s3://destination : echo s3 sync --endpoint-url=envato-test-bucket.s3-website-us-east-1.amazonaws.com"
+  stub aws "s3 sync --endpoint-url=https://myaccountid.r2.cloudflarestorage.com source/ s3://destination : echo s3 sync --endpoint-url=https://myaccountid.r2.cloudflarestorage.com"
 
   run $PWD/hooks/post-command
 
   assert_success
-  assert_output --partial "s3 sync --endpoint-url=envato-test-bucket.s3-website-us-east-1.amazonaws.com"
+  assert_output --partial "s3 sync --endpoint-url=https://myaccountid.r2.cloudflarestorage.com"
   unstub aws
 }
 
