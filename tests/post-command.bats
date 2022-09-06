@@ -63,7 +63,7 @@ load '/usr/local/lib/bats/load.bash'
   unstub aws
 }
 
-@test "Doesn't follow symlinks" {
+@test "Uses endpoint URL" {
   export BUILDKITE_COMMAND_EXIT_STATUS=0
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_SOURCE=source/
   export BUILDKITE_PLUGIN_AWS_S3_SYNC_DESTINATION=s3://destination
