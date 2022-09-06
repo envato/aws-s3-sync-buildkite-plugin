@@ -14,7 +14,7 @@ steps:
   - label: "Generate files and push to S3"
     command: bin/command-that-generates-files
     plugins:
-      - envato/aws-s3-sync#v0.4.0:
+      - envato/aws-s3-sync#v0.5.0:
           source: local-directory/
           destination: s3://example-bucket/directory/
 ```
@@ -26,7 +26,7 @@ steps:
   - label: "Pull files from S3 and execute task"
     command: bin/command-that-uses-files
     plugins:
-      - envato/aws-s3-sync#v0.4.0:
+      - envato/aws-s3-sync#v0.5.0:
           source: s3://example-bucket/directory/
           destination: local-directory/
 ```
