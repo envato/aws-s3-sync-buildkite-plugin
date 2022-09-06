@@ -63,7 +63,7 @@ Specify the cache control metadata value for all syncable objects
 
 Defaults to `null`
 
-Specify the s3 endpoint URL to use.
+Optionally specify an s3 endpoint URL to override the default. This option can be used to integrate with services that provide a s3 compatible api like CloudFlare R2.
 
 ## Development
 
