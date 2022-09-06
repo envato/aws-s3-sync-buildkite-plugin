@@ -59,6 +59,12 @@ Defaults to `null`
 
 Specify the cache control metadata value for all syncable objects 
 
+### `endpoint`
+
+Defaults to `null`
+
+Specify the s3 endpoint to use.
+
 ## Development
 
 To run the tests:
